@@ -2,6 +2,10 @@
 
 describe('initial page load of application', () => {
   beforeEach(() => {
+    cy.intercept('https://api.dictionaryapi.dev/api/v2/entries/en/keyboard', {
+      statusCode: 2000,
+      fixture: 'keyboard.json',
+    });
     cy.visit('/');
     cy.get('[data-testid="searchBar"]').as('searchBar');
     cy.get('[data-testid="wordTitle"').as('wordTitle');

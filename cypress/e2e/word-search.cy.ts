@@ -2,6 +2,15 @@
 
 describe('searching for word', () => {
   beforeEach(() => {
+    cy.intercept('https://api.dictionaryapi.dev/api/v2/entries/en/software', {
+      statusCode: 200,
+      fixture: 'software.json',
+    });
+    cy.intercept('https://api.dictionaryapi.dev/api/v2/entries/en/asdf', {
+      statusCode: 200,
+      fixture: 'asdf.json',
+    });
+    
     cy.visit('/');
     cy.get('[data-testid="searchBar"]').as('searchBar');
     cy.get('[data-testid="wordTitle"').as('wordTitle');
