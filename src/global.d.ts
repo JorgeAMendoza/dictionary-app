@@ -25,6 +25,12 @@ interface WordInformation {
   meanings: Meanings[];
 }
 
+interface ErrorResponse {
+  title: string;
+  message: string;
+  resolution: string;
+}
+
 type APIResponse = WordInformation[];
 
 type WordInformation = WordInformation;
