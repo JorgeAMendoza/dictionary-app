@@ -1,11 +1,16 @@
+import { useState } from 'react';
 import SearchBar from './SearchBar/SearchBar';
 import playIcon from '../../assets/images/icon-play.svg';
 import sourceIcon from '../../assets/images/icon-new-window.svg';
+import useSWR from 'swr';
+import fetchWord from '../../lib/fetch-word';
 
 const WordSearch = () => {
+  const [word, setWord] = useState('keyboard');
+  const { data, error, isLoading } = useSWR(word, fetchWord);
   return (
     <main>
-      <SearchBar />
+      <SearchBar setWord={setWord} />
 
       <section>
         <div>
