@@ -7,7 +7,10 @@ import fetchWord from '../../lib/fetch-word';
 
 const WordSearch = () => {
   const [word, setWord] = useState('keyboard');
-  const { data, error, isLoading } = useSWR(word, fetchWord);
+  const { data, error, isLoading } = useSWR<WordInformation, Error>(
+    word,
+    fetchWord
+  );
   return (
     <main>
       <SearchBar setWord={setWord} />
