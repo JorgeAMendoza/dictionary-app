@@ -3,14 +3,14 @@ type Definition = {
   definition: string;
   synonyms: string[];
   antonyms: string[];
+  example?: string;
 };
 
 type Meanings = {
   partOfSeach: string;
   definitions: Definition[];
   synonyms: string[];
-  antonyms: string[];
-  example?: string;
+  antonyms: string[]
 };
 
 type Phonetic = {
@@ -18,7 +18,7 @@ type Phonetic = {
   audio: string;
 };
 
-interface WordInformation {
+interface WordResponse {
   word: string;
   phonetic: string;
   phonetics: Phonetic[];
@@ -31,6 +31,13 @@ interface ErrorResponse {
   resolution: string;
 }
 
-type APIResponse = WordInformation[];
+interface WordInformation {
+  word: string;
+  phonetic: string;
+  audio: string | null;
+  meanings: Meanings[];
+}
+
+type APIResponse = WordResponse[];
 
 type WordInformation = WordInformation;
