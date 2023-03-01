@@ -7,10 +7,10 @@ type Definition = {
 };
 
 type Meanings = {
-  partOfSeach: string;
+  partOfSpeech: string;
   definitions: Definition[];
   synonyms: string[];
-  antonyms: string[]
+  antonyms: string[];
 };
 
 type Phonetic = {
@@ -39,5 +39,3 @@ interface WordInformation {
 }
 
 type APIResponse = WordResponse[];
-
-type WordInformation = WordInformation;
