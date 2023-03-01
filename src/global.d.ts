@@ -23,6 +23,7 @@ interface WordResponse {
   phonetic: string;
   phonetics: Phonetic[];
   meanings: Meanings[];
+  sourceUrls: string[];
 }
 
 interface ErrorResponse {
@@ -36,6 +37,7 @@ interface WordInformation {
   phonetic: string;
   audio: string | null;
   meanings: Meanings[];
+  source: string;
 }
 
 type APIResponse = WordResponse[];

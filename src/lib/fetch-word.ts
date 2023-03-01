@@ -17,6 +17,7 @@ const fetchWord = async (word: string): Promise<WordInformation> => {
       phonetic: data[0].phonetic,
       meanings: data[0].meanings,
       audio: grabAudio(data[0].phonetics),
+      source: data[0].sourceUrls[0] || '',
     };
 
     if (data.length === 1) return wordInformation;
@@ -36,7 +37,7 @@ const fetchWord = async (word: string): Promise<WordInformation> => {
     for (const meaning of extraMeanings) {
       if (
         !currentMeanings.find(
-          (word) => meaning.partOfSeach !== word.partOfSeach
+          (word) => meaning.partOfSpeech !== word.partOfSpeech
         )
       ) {
         wordInformation.meanings.push(meaning);

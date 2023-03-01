@@ -5,7 +5,6 @@ interface WordDisplayProps {
 }
 
 const WordDisplay = ({ wordData }: WordDisplayProps) => {
-  console.log(wordData.meanings);
   return (
     <article
       id="word-information"
