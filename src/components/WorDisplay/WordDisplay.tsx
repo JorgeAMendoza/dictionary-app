@@ -44,12 +44,41 @@ const WordDisplay = ({ wordData }: WordDisplayProps) => {
                 </li>
               ))}
             </ul>
+            {meaning.synonyms.length > 0 ? (
+              <div>
+                <p>Synonyyms</p>
+                <ul>
+                  {meaning.synonyms.map((word) => (
+                    <li key={word}>{word}</li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
+
+            {meaning.antonyms.length > 0 ? (
+              <div>
+                <p>Antonyms</p>
+                <ul>
+                  {meaning.antonyms.map((word) => (
+                    <li key={word}>{word}</li>
+                  ))}
+                </ul>
+              </div>
+            ) : null}
           </div>
         </section>
       ))}
 
       <footer>
         <p>Source</p>
+        <a
+          href={wordData.source}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`link to wikipedia page about the word ${wordData.word}`}
+        >
+          {wordData.audio}
+        </a>
       </footer>
     </article>
   );
