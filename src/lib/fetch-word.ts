@@ -37,11 +37,10 @@ const fetchWord = async (word: string): Promise<WordInformation> => {
     for (const meaning of extraMeanings) {
       if (
         !currentMeanings.find(
-          (word) => meaning.partOfSpeech !== word.partOfSpeech
+          (word) => meaning.partOfSpeech === word.partOfSpeech
         )
-      ) {
+      )
         wordInformation.meanings.push(meaning);
-      }
     }
 
     return wordInformation;
