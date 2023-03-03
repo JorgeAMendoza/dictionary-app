@@ -6,11 +6,25 @@ type Definition = {
   example?: string;
 };
 
-type Meanings = {
+type Synonym = {
+  id: string;
+  word: string;
+};
+
+type Antonym = Synonym;
+
+type MeaningsAPI = {
   partOfSpeech: string;
   definitions: Definition[];
   synonyms: string[];
   antonyms: string[];
+};
+
+type Meanings = {
+  partOfSpeech: string;
+  definitions: Definition[];
+  synonyms: Synonym[];
+  antonyms: Antonym[];
 };
 
 type Phonetic = {
@@ -22,7 +36,7 @@ interface WordResponse {
   word: string;
   phonetic: string;
   phonetics: Phonetic[];
-  meanings: Meanings[];
+  meanings: MeaningsAPI[];
   sourceUrls: string[];
 }
 

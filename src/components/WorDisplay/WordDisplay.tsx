@@ -48,8 +48,8 @@ const WordDisplay = ({ wordData }: WordDisplayProps) => {
               <div>
                 <p>Synonyyms</p>
                 <ul>
-                  {meaning.synonyms.map((word) => (
-                    <li key={word}>{word}</li>
+                  {meaning.synonyms.map((synonym) => (
+                    <li key={synonym.id}>{synonym.word}</li>
                   ))}
                 </ul>
               </div>
@@ -59,8 +59,8 @@ const WordDisplay = ({ wordData }: WordDisplayProps) => {
               <div>
                 <p>Antonyms</p>
                 <ul>
-                  {meaning.antonyms.map((word) => (
-                    <li key={word}>{word}</li>
+                  {meaning.antonyms.map((antonym) => (
+                    <li key={antonym.id}>{antonym.word}</li>
                   ))}
                 </ul>
               </div>
