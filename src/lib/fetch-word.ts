@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { nanoid } from 'nanoid';
 
 const grabAudio = (phonetics: WordResponse['phonetics']): string | null => {
   for (const phon of phonetics) {
@@ -12,11 +13,39 @@ const fetchWord = async (word: string): Promise<WordInformation> => {
     const { data } = await axios.get<APIResponse>(
       `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
     );
+
+    const meanings: Meanings[] = data[0].meanings.map((meaning) => {
+      const synonyms = [];
+      const antonyms = [];
+
+      for (const word of meaning.synonyms) {
+        synonyms.push({
+          id: nanoid(),
+          word,
+        });
+      }
+
+      for (const word of meaning.antonyms) {
+        antonyms.push({
+          id: nanoid(),
+          word,
+        });
+      }
+
+      return {
+        partOfSpeech: meaning.partOfSpeech,
+        definitions: meaning.definitions,
+        synonyms,
+        antonyms,
+      };
+    });
+
     const wordInformation = {
       word: data[0].word,
       phonetic: data[0].phonetic,
-      meanings: data[0].meanings,
       audio: grabAudio(data[0].phonetics),
+      source: data[0].sourceUrls[0],
+      meanings,
     };
 
     if (data.length === 1) return wordInformation;
@@ -25,7 +54,7 @@ const fetchWord = async (word: string): Promise<WordInformation> => {
 
     const currentMeanings = [...wordInformation.meanings];
 
-    const extraMeanings: Meanings[] = [];
+    const extraMeanings: MeaningsAPI[] = [];
 
     for (let i = 0; i < extraWords.length; i++) {
       const currentMeaning = extraWords[i].meanings;
@@ -36,10 +65,32 @@ const fetchWord = async (word: string): Promise<WordInformation> => {
     for (const meaning of extraMeanings) {
       if (
         !currentMeanings.find(
-          (word) => meaning.partOfSeach !== word.partOfSeach
+          (word) => meaning.partOfSpeech === word.partOfSpeech
         )
       ) {
-        wordInformation.meanings.push(meaning);
+        const synonyms = [];
+        const antonyms = [];
+
+        for (const word of meaning.synonyms) {
+          synonyms.push({
+            id: nanoid(),
+            word,
+          });
+        }
+
+        for (const word of meaning.antonyms) {
+          antonyms.push({
+            id: nanoid(),
+            word,
+          });
+        }
+
+        wordInformation.meanings.push({
+          partOfSpeech: meaning.partOfSpeech,
+          definitions: meaning.definitions,
+          synonyms,
+          antonyms,
+        });
       }
     }
 
