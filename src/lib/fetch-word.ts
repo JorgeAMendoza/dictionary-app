@@ -56,8 +56,6 @@ const fetchWord = async (word: string): Promise<WordInformation> => {
 
     const extraMeanings: MeaningsAPI[] = [];
 
-    // so now, it becomes even more of a mess,
-
     for (let i = 0; i < extraWords.length; i++) {
       const currentMeaning = extraWords[i].meanings;
       for (let j = 0; j < currentMeaning.length; j++)
@@ -70,7 +68,6 @@ const fetchWord = async (word: string): Promise<WordInformation> => {
           (word) => meaning.partOfSpeech === word.partOfSpeech
         )
       ) {
-        // so we have regular words here, if we need to push it, just do what we did above in the original meaning change
         const synonyms = [];
         const antonyms = [];
 
