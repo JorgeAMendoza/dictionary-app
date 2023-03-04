@@ -1,10 +1,12 @@
 import audioIcon from '../../assets/images/icon-play.svg';
+import { useRef } from 'react';
 
 interface WordDisplayProps {
   wordData: WordInformation;
 }
 
 const WordDisplay = ({ wordData }: WordDisplayProps) => {
+  const audioElement = useRef<HTMLAudioElement | null>(null);
   return (
     <article
       id="word-information"
@@ -18,14 +20,22 @@ const WordDisplay = ({ wordData }: WordDisplayProps) => {
 
         {/* display disabled button without audio if no aduio */}
         {wordData.audio ? (
-          <button aria-label="button to play the audio phonetic of the word">
+          <button
+            aria-label={`button to play the audio phonetic of the word ${wordData.word}`}
+            onClick={() => {
+              if (audioElement) audioElement.current?.play();
+            }}
+          >
             <img src={audioIcon} alt="play audio icon" />
-            <audio src={wordData.audio}>
+            <audio src={wordData.audio} ref={audioElement}>
               <track kind="captions"></track>
             </audio>
           </button>
         ) : (
-          <button disabled>
+          <button
+            disabled
+            aria-label={`no audio file for the word ${wordData.word}`}
+          >
             <img src={audioIcon} alt="play audio icon" />
           </button>
         )}

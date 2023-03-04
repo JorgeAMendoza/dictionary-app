@@ -3,7 +3,7 @@ import SearchBar from '../SearchBar/SearchBar';
 import useSWR from 'swr';
 import fetchWord from '../../lib/fetch-word';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
-import WordDisplay from '../WorDisplay/WordDisplay';
+import WordDisplay from '../WordDisplay/WordDisplay';
 
 const WordSearch = () => {
   const [word, setWord] = useState('keyboard');
