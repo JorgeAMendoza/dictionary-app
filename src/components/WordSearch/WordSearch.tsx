@@ -1,15 +1,20 @@
 import { useState } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
-import useSWRImmutable from 'swr';
+import useSWR from 'swr';
 import fetchWord from '../../lib/fetch-word';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import WordDisplay from '../WorDisplay/WordDisplay';
 
 const WordSearch = () => {
   const [word, setWord] = useState('keyboard');
-  const { data, error, isLoading } = useSWRImmutable<WordInformation, Error>(
+  const { data, error, isLoading } = useSWR<WordInformation, Error>(
     word,
-    fetchWord
+    fetchWord,
+    {
+      revalidateOnReconnect: false,
+      revalidateOnFocus: false,
+      errorRetryCount: 0,
+    }
   );
 
   return (
