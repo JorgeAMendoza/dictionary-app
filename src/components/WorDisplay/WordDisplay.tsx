@@ -77,7 +77,7 @@ const WordDisplay = ({ wordData }: WordDisplayProps) => {
           rel="noreferrer"
           aria-label={`link to wikipedia page about the word ${wordData.word}`}
         >
-          {wordData.audio}
+          {wordData.source}
         </a>
       </footer>
     </article>
