@@ -52,8 +52,6 @@ const fetchWord = async (word: string): Promise<WordInformation> => {
 
     const extraWords = data.slice(1);
 
-    const currentMeanings = [...wordInformation.meanings];
-
     const extraMeanings: MeaningsAPI[] = [];
 
     for (let i = 0; i < extraWords.length; i++) {
@@ -64,7 +62,7 @@ const fetchWord = async (word: string): Promise<WordInformation> => {
 
     for (const meaning of extraMeanings) {
       if (
-        !currentMeanings.find(
+        !wordInformation.meanings.find(
           (word) => meaning.partOfSpeech === word.partOfSpeech
         )
       ) {
