@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, memo } from 'react';
 import SearchBar from '../SearchBar/SearchBar';
 import useSWR from 'swr';
 import fetchWord from '../../lib/fetch-word';
@@ -33,4 +33,4 @@ const WordSearch = () => {
   );
 };
 
-export default WordSearch;
+export default memo(WordSearch);
