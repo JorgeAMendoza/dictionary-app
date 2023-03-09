@@ -13,6 +13,7 @@ const NavBar = () => {
 
       <select
         id="font-select"
+        data-cy="fontSelect"
         aria-expanded="false"
         onChange={(e) => {
           let font: Fonts = 'mono';
