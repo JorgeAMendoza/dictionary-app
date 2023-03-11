@@ -22,6 +22,7 @@ const SearchBar = ({ setWord }: SearchBarProps) => {
           onChange={(event) => setSearch(event.target.value)}
           onBlur={(event) => setSearch(event.target.value)}
           value={search}
+          data-cy="searchBar"
         />
       </label>
 
