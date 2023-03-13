@@ -1,7 +1,9 @@
-/* eslint-disable @typescript-eslint/no-namespace */
-/// <reference types="cypress" />
-
 Cypress.Commands.add('searchWord', (word: string) => {
-  cy.get('[data-cy="searchWord"]').type(word);
+  if (!word) {
+    cy.get('[data-cy="searchBar"]').clear();
+    cy.get('[data-cy="searchWordButton"]').click();
+    return;
+  }
+  cy.get('[data-cy="searchBar"]').clear().type(word);
   cy.get('[data-cy="searchWordButton"]').click();
 });

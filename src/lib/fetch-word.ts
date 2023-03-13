@@ -52,8 +52,6 @@ const fetchWord = async (word: string): Promise<WordInformation> => {
 
     const extraWords = data.slice(1);
 
-    const currentMeanings = [...wordInformation.meanings];
-
     const extraMeanings: MeaningsAPI[] = [];
 
     for (let i = 0; i < extraWords.length; i++) {
@@ -63,11 +61,35 @@ const fetchWord = async (word: string): Promise<WordInformation> => {
     }
 
     for (const meaning of extraMeanings) {
-      if (
-        !currentMeanings.find(
-          (word) => meaning.partOfSpeech === word.partOfSpeech
-        )
-      ) {
+      const wordIndex = wordInformation.meanings.findIndex(
+        (word) => meaning.partOfSpeech === word.partOfSpeech
+      );
+      // insert extra information to already existing meaning
+      if (wordIndex !== -1) {
+        const synonyms = [];
+        const antonyms = [];
+
+        for (const word of meaning.synonyms) {
+          synonyms.push({
+            id: nanoid(),
+            word,
+          });
+        }
+
+        for (const word of meaning.antonyms) {
+          antonyms.push({
+            id: nanoid(),
+            word,
+          });
+        }
+
+        wordInformation.meanings[wordIndex].synonyms.push(...synonyms);
+        wordInformation.meanings[wordIndex].antonyms.push(...antonyms);
+        wordInformation.meanings[wordIndex].definitions.push(
+          ...meaning.definitions
+        );
+      } else {
+        // need to create new word meaning
         const synonyms = [];
         const antonyms = [];
 

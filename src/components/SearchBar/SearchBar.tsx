@@ -22,10 +22,14 @@ const SearchBar = ({ setWord }: SearchBarProps) => {
           onChange={(event) => setSearch(event.target.value)}
           onBlur={(event) => setSearch(event.target.value)}
           value={search}
+          data-cy="searchBar"
         />
       </label>
 
-      <button aria-label="button to launch search for word">
+      <button
+        aria-label="button to launch search for word"
+        data-cy="searchWordButton"
+      >
         <img src={searchIcon} alt="search icon" />
       </button>
     </form>

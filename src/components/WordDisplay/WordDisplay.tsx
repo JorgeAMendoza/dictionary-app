@@ -14,13 +14,14 @@ const WordDisplay = ({ wordData }: WordDisplayProps) => {
     >
       <header>
         <div>
-          <h1>{wordData.word}</h1>
-          <p>{wordData.phonetic}</p>
+          <h1 data-cy="wordTitle">{wordData.word}</h1>
+          <p data-cy="wordPronuc">{wordData.phonetic}</p>
         </div>
 
         {/* display disabled button without audio if no aduio */}
         {wordData.audio ? (
           <button
+            data-cy="audioButton"
             aria-label={`button to play the audio phonetic of the word ${wordData.word}`}
             onClick={() => {
               if (audioElement) audioElement.current?.play();
@@ -33,6 +34,7 @@ const WordDisplay = ({ wordData }: WordDisplayProps) => {
           </button>
         ) : (
           <button
+            data-cy="audioButton"
             disabled
             aria-label={`no audio file for the word ${wordData.word}`}
           >
@@ -42,11 +44,14 @@ const WordDisplay = ({ wordData }: WordDisplayProps) => {
       </header>
 
       {wordData.meanings.map((meaning) => (
-        <section key={meaning.partOfSpeech}>
+        <article
+          key={meaning.partOfSpeech}
+          data-cy={`${meaning.partOfSpeech}Meanings`}
+        >
           <h2>{meaning.partOfSpeech}</h2>
-          <div>
+          <section>
             <h3>meaning</h3>
-            <ul>
+            <ul data-cy="meanings">
               {meaning.definitions.map((info) => (
                 <li key={info.definition}>
                   <p>{info.definition}</p>
@@ -57,7 +62,7 @@ const WordDisplay = ({ wordData }: WordDisplayProps) => {
             {meaning.synonyms.length > 0 ? (
               <div>
                 <p>Synonyyms</p>
-                <ul>
+                <ul data-cy="synonymList">
                   {meaning.synonyms.map((synonym) => (
                     <li key={synonym.id}>{synonym.word}</li>
                   ))}
@@ -68,15 +73,15 @@ const WordDisplay = ({ wordData }: WordDisplayProps) => {
             {meaning.antonyms.length > 0 ? (
               <div>
                 <p>Antonyms</p>
-                <ul>
+                <ul data-cy="antonymList">
                   {meaning.antonyms.map((antonym) => (
                     <li key={antonym.id}>{antonym.word}</li>
                   ))}
                 </ul>
               </div>
             ) : null}
-          </div>
-        </section>
+          </section>
+        </article>
       ))}
 
       <footer>
@@ -86,6 +91,7 @@ const WordDisplay = ({ wordData }: WordDisplayProps) => {
           target="_blank"
           rel="noreferrer"
           aria-label={`link to wikipedia page about the word ${wordData.word}`}
+          data-cy="wordSource"
         >
           {wordData.source}
         </a>
