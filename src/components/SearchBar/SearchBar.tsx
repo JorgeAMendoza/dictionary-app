@@ -32,7 +32,7 @@ const SearchBar = ({ setWord }: SearchBarProps) => {
             data-cy="searchBar"
           />
         </label>
-        {error ? <p>{error}</p> : null}
+        {error ? <p data-cy="inputErrorText">{error}</p> : null}
       </div>
 
       <button

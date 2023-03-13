@@ -25,7 +25,7 @@ describe('searching for word', () => {
     cy.get('[data-cy="wordSource"').as('wordSource');
   });
 
-  it.only('search for word "software", successfull search, word data is displayed', () => {
+  it('search for word "software", successfull search, word data is displayed', () => {
     cy.searchWord('software');
 
     cy.get('@wordTitle').should('contain.text', 'software');
@@ -48,7 +48,7 @@ describe('searching for word', () => {
     cy.get('@verbMeanings').should('not.exist');
   });
 
-  it.only('search for term "asdf", bad search, error component rendered', () => {
+  it('search for term "asdf", bad search, error component rendered', () => {
     cy.searchWord('asdf');
 
     cy.get('[data-cy="errorMessage"]')
@@ -57,9 +57,9 @@ describe('searching for word', () => {
   });
 
   it.only('search for empty term, bad search, only error message text displayed', () => {
-    cy.searchWord(' ');
+    cy.searchWord('');
 
-    cy.get('[data-cy="errorText"]').should(
+    cy.get('[data-cy="inputErrorText"]').should(
       'contain.text',
       "Whoops, can't be empty..."
     );
