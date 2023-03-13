@@ -56,7 +56,49 @@ describe('searching for word', () => {
       .should('contain.text', 'No Definitions Found');
   });
 
-  it.only('search for empty term, bad search, only error message text displayed', () => {
+  it('search for termn "goober", successfull search, word data is displayed', () => {
+    cy.searchWord('goober');
+
+    cy.get('@wordTitle').should('contain.text', 'goober');
+    cy.get('@wordPronuc').should('contain.text', '/ˈɡuːbə/');
+    cy.get('@audioButton')
+      .find('audio')
+      .should('have.attr', 'src')
+      .should(
+        'contain',
+        'https://api.dictionaryapi.dev/media/pronunciations/en/goober-us.mp3'
+      );
+
+    cy.get('@nounMeanings')
+      .find('[data-cy="meanings"]')
+      .children()
+      .should('have.length', 7);
+    cy.get('@nounMeanings')
+      .find('[data-cy="synonymList"]')
+      .children()
+      .should('have.length', 5);
+    cy.get('@nounMeanings').find('[data-cy="anotnymList"]').should('not.exist');
+
+    cy.get('@wordSource').children().should('have.length', 3);
+    cy.get('@wordSource')
+      .children()
+      .then(($el) => {
+        cy.wrap($el[0]).should(
+          'contain.text',
+          'https://en.wiktionary.org/wiki/Georgian'
+        );
+        cy.wrap($el[1]).should(
+          'contain.text',
+          'https://en.wiktionary.org/wiki/goober'
+        );
+        cy.wrap($el[2]).should(
+          'containt.text',
+          'https://en.wiktionary.org/wiki/peanut'
+        );
+      });
+  });
+
+  it('search for empty term, bad search, only error message text displayed', () => {
     cy.searchWord('');
 
     cy.get('[data-cy="inputErrorText"]').should(

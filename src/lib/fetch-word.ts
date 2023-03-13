@@ -19,6 +19,8 @@ const fetchWord = async (word: string): Promise<WordInformation> => {
       const antonyms = [];
 
       for (const word of meaning.synonyms) {
+
+        
         synonyms.push({
           id: nanoid(),
           word,
