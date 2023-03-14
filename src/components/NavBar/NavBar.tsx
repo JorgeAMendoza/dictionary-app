@@ -1,9 +1,12 @@
 import bookLogo from '../../assets/images/logo.svg';
 import { Fonts } from '../../context/font-context';
 import { useFontActionContext } from '../../hooks/context';
+import { useThemeActionContext, useThemeContext } from '../../hooks/theme';
 
 const NavBar = () => {
   const setFont = useFontActionContext();
+  const setTheme = useThemeActionContext();
+  const theme = useThemeContext();
 
   return (
     <header>
@@ -41,7 +44,17 @@ const NavBar = () => {
       </select>
 
       <div>
-        <input type="checkbox" aria-label="toggle to light theme" />
+        {/* styled prop maybe to indicate type */}
+        <button
+          role="switch"
+          aria-checked={theme === 'dark' ? true : false}
+          aria-label={`click to change theme to ${
+            theme === 'dark' ? 'light' : 'dark'
+          }`}
+          onClick={() => {
+            if (setTheme) setTheme(theme === 'dark' ? 'light' : 'dark');
+          }}
+        />
       </div>
     </header>
   );
