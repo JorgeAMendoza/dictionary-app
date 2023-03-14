@@ -14,13 +14,17 @@ const fetchWord = async (word: string): Promise<WordInformation> => {
       `https://api.dictionaryapi.dev/api/v2/entries/en/${word}`
     );
 
-    const meanings: Meanings[] = data[0].meanings.map((meaning) => {
+    const meanings: Meanings[] = [];
+    const foundMeanings: {
+      [k: string]: number;
+    } = {};
+
+    for (let i = 0; i < data[0].meanings.length; i++) {
+      const meaning = data[0].meanings[i];
       const synonyms = [];
       const antonyms = [];
 
       for (const word of meaning.synonyms) {
-
-        
         synonyms.push({
           id: nanoid(),
           word,
@@ -34,14 +38,22 @@ const fetchWord = async (word: string): Promise<WordInformation> => {
         });
       }
 
-      return {
+      if (meaning.partOfSpeech in foundMeanings) {
+        const index = foundMeanings[meaning.partOfSpeech];
+        meanings[index].definitions.push(...meaning.definitions);
+        meanings[index].synonyms.push(...synonyms);
+        meanings[index].antonyms.push(...antonyms);
+        continue;
+      }
+
+      foundMeanings[meaning.partOfSpeech] = i;
+      meanings.push({
         partOfSpeech: meaning.partOfSpeech,
         definitions: meaning.definitions,
         synonyms,
         antonyms,
-      };
-    });
-
+      });
+    }
     const wordInformation = {
       word: data[0].word,
       phonetic: data[0].phonetic,
