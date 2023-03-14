@@ -29,7 +29,7 @@ const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
     font-size: 1.6rem;
     min-height: 100vh;
     position:relative;
-    background-color: black;
+    background-color: ${({ theme }) => theme.background};
     color: var(--white);
     padding-bottom:3rem;
   } 
