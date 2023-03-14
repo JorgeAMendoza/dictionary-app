@@ -22,7 +22,7 @@ describe('searching for word', () => {
     cy.get('[data-cy="audioButton"]').as('audioButton');
     cy.get('[data-cy="nounMeanings"]').as('nounMeanings');
     cy.get('[data-cy="verbMeanings"]').as('verbMeanings');
-    cy.get('[data-cy="wordSource"').as('wordSource');
+    cy.get('[data-cy="wordSources"').as('wordSource');
   });
 
   it('search for word "software", successfull search, word data is displayed', () => {
@@ -92,7 +92,7 @@ describe('searching for word', () => {
           'https://en.wiktionary.org/wiki/goober'
         );
         cy.wrap($el[2]).should(
-          'containt.text',
+          'contain.text',
           'https://en.wiktionary.org/wiki/peanut'
         );
       });

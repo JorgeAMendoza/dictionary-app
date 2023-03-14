@@ -86,7 +86,7 @@ const WordDisplay = ({ wordData }: WordDisplayProps) => {
 
       <footer>
         <p>Sources</p>
-        <ul>
+        <ul data-cy="wordSources">
           {wordData.sources.map((source) => (
             <a key={source} href={source} target="_blank" rel="noreferrer">
               {source}

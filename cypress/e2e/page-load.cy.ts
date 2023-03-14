@@ -13,7 +13,7 @@ describe('initial page load of application', () => {
     cy.get('[data-cy="audioButton"]').as('audioButton');
     cy.get('[data-cy="nounMeanings"]').as('nounMeanings');
     cy.get('[data-cy="verbMeanings"]').as('verbMeanings');
-    cy.get('[data-cy="wordSource"]').as('wordSource');
+    cy.get('[data-cy="wordSources"]').as('wordSource');
   });
 
   it.only('initial search term for "keyboard" is rendered', () => {
@@ -47,6 +47,8 @@ describe('initial page load of application', () => {
       'https://en.wiktionary.org/wiki/keyboard'
     );
     cy.get('@wordSource')
+      .children()
+      .should('have.length', 1)
       .should('have.attr', 'href')
       .should('contain', 'https://en.wiktionary.org/wiki/keyboard');
   });
