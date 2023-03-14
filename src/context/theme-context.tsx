@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 export const ThemeContext = createContext<Theme>('light');
 export const ThemeActionContext = createContext<React.Dispatch<
@@ -13,6 +13,13 @@ interface ThemeContextProviderProps {
 
 const ThemeContextProvider = ({ children }: ThemeContextProviderProps) => {
   const [theme, setTheme] = useState<Theme>('light');
+
+  useEffect(() => {
+    const { matches: prefersDark } = window.matchMedia(
+      '(prefers-color-scheme: dark'
+    );
+    if (prefersDark) setTheme('dark');
+  }, []);
 
   return (
     <ThemeActionContext.Provider value={setTheme}>
