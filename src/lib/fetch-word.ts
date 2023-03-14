@@ -58,7 +58,7 @@ const fetchWord = async (word: string): Promise<WordInformation> => {
       word: data[0].word,
       phonetic: data[0].phonetic,
       audio: grabAudio(data[0].phonetics),
-      source: data[0].sourceUrls[0],
+      sources: data[0].sourceUrls,
       meanings,
     };
 

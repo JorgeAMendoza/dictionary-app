@@ -51,7 +51,7 @@ interface WordInformation {
   phonetic: string;
   audio: string | null;
   meanings: Meanings[];
-  source: string;
+  sources: string[];
 }
 
 type APIResponse = WordResponse[];

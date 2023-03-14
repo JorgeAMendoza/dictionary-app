@@ -85,16 +85,14 @@ const WordDisplay = ({ wordData }: WordDisplayProps) => {
       ))}
 
       <footer>
-        <p>Source</p>
-        <a
-          href={wordData.source}
-          target="_blank"
-          rel="noreferrer"
-          aria-label={`link to wikipedia page about the word ${wordData.word}`}
-          data-cy="wordSource"
-        >
-          {wordData.source}
-        </a>
+        <p>Sources</p>
+        <ul>
+          {wordData.sources.map((source) => (
+            <a key={source} href={source} target="_blank" rel="noreferrer">
+              {source}
+            </a>
+          ))}
+        </ul>
       </footer>
     </article>
   );
