@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+import hexToRgb from '../utils/hex-to-rgb';
 
 describe('initial page load of application', () => {
   beforeEach(() => {
@@ -16,7 +17,7 @@ describe('initial page load of application', () => {
     cy.get('[data-cy="wordSources"]').as('wordSource');
   });
 
-  it.only('initial search term for "keyboard" is rendered', () => {
+  it('initial search term for "keyboard" is rendered', () => {
     cy.get('@searchBar').should('have.value', 'keyboard');
     cy.get('@wordTitle').should('contain.text', 'keyboard');
     cy.get('@wordPronuc').should('contain.text', '/ˈkiːbɔːd/');
@@ -51,5 +52,17 @@ describe('initial page load of application', () => {
       .should('have.length', 1)
       .should('have.attr', 'href')
       .should('contain', 'https://en.wiktionary.org/wiki/keyboard');
+  });
+
+  it('user prefered color scheme sets the proper theme', () => {
+    const { matches: prefersDark } = window.matchMedia(
+      '(prefers-color-scheme: dark)'
+    );
+
+    if (prefersDark) {
+      cy.get('body').should('have.css', 'background-color', hexToRgb('050505'));
+    } else {
+      cy.get('body').should('have.css', 'background-color', hexToRgb('FFFFFF'));
+    }
   });
 });
