@@ -1,9 +1,15 @@
 import { DefaultTheme } from 'styled-components';
 
+// so lets do it by the way teh component/html is structured.
+
 export const lightTheme: DefaultTheme = {
-  background: 'blue',
+  background: '#FFFFFF',
+  mainText: '#2D2D2D',
+  searchBackground: '#F4F4F4',
 };
 
 export const darkTheme: DefaultTheme = {
   background: '#050505',
+  mainText: '#FFFFFF',
+  searchBackground: '#1F1F1F',
 };

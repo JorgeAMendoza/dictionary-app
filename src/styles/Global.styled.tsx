@@ -30,7 +30,7 @@ const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
     min-height: 100vh;
     position:relative;
     background-color: ${({ theme }) => theme.background};
-    color: var(--white);
+    color: ${({ theme }) => theme.mainText};
     padding-bottom:3rem;
   } 
   img,svg {
