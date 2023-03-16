@@ -1,12 +1,15 @@
 import bookLogo from '../../assets/images/logo.svg';
 import { Fonts } from '../../context/font-context';
-import { useFontActionContext } from '../../hooks/context';
+import { useFontActionContext, useFontContext } from '../../hooks/context';
 import { useThemeActionContext, useThemeContext } from '../../hooks/theme';
 import Moon from '../Icons/Moon';
 import Styled from './Navbar.styled';
 import arrowIcon from '../../assets/images/icon-arrow-down.svg';
+import { useState } from 'react';
 
 const NavBar = () => {
+  const [showFontMenu, setShowFontMenu] = useState(false);
+  const font = useFontContext();
   const setFont = useFontActionContext();
   const setTheme = useThemeActionContext();
   const theme = useThemeContext();
@@ -18,10 +21,19 @@ const NavBar = () => {
       </Styled.Logo>
 
       <div>
+        <button
+          aria-controls="font-select"
+          aria-label={`click to change font, current font is ${font}`}
+          onClick={() => setShowFontMenu(!showFontMenu)}
+        >
+          {font} <img src={arrowIcon} alt="" />
+        </button>
         <Styled.FontSelection
+          showFontMenu={showFontMenu}
           id="font-select"
           data-cy="fontSelect"
-          aria-expanded="false"
+          aria-expanded={showFontMenu}
+          aria-hidden={showFontMenu}
           onChange={(e) => {
             let font: Fonts = 'mono';
 
@@ -46,7 +58,6 @@ const NavBar = () => {
           <option value="serif">Serif</option>
           <option value="mono">mono</option>
         </Styled.FontSelection>
-        <img src={arrowIcon} alt="" />
       </div>
 
       <Styled.ThemeToggle>
