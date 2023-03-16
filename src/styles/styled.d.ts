@@ -5,5 +5,6 @@ declare module 'styled-components' {
     background: string;
     mainText: string;
     searchBackground: string;
+    moonIcon: string;
   }
 }
