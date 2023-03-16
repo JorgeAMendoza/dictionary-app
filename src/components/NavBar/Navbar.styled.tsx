@@ -25,18 +25,12 @@ const ThemeToggle = styled.div`
   }
 `;
 
-const FontSelection = styled.select<FontSelectionProps>`
+const FontSelection = styled.ul<FontSelectionProps>`
   background: transparent;
   color: inherit;
   font-family: inherit;
   border: none;
   display: ${({ showFontMenu }) => (showFontMenu ? 'block' : 'none')};
-
-  -o-appearance: none;
-  -ms-appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
 `;
 
 export default { NavBar, Logo, ThemeToggle, FontSelection };

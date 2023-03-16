@@ -5,7 +5,7 @@ import { useThemeActionContext, useThemeContext } from '../../hooks/theme';
 import Moon from '../Icons/Moon';
 import Styled from './Navbar.styled';
 import arrowIcon from '../../assets/images/icon-arrow-down.svg';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 const NavBar = () => {
   const [showFontMenu, setShowFontMenu] = useState(false);
@@ -13,6 +13,14 @@ const NavBar = () => {
   const setFont = useFontActionContext();
   const setTheme = useThemeActionContext();
   const theme = useThemeContext();
+
+  const changeFont = (fontSelection: Fonts) => {
+    console.log(fontSelection, font);
+    if (fontSelection === font) return;
+
+    if (setFont) setFont(fontSelection);
+    setShowFontMenu(false);
+  };
 
   return (
     <Styled.NavBar>
@@ -34,29 +42,31 @@ const NavBar = () => {
           data-cy="fontSelect"
           aria-expanded={showFontMenu}
           aria-hidden={showFontMenu}
-          onChange={(e) => {
-            let font: Fonts = 'mono';
-
-            switch (e.target.value as Fonts) {
-              case 'sans-serif': {
-                font = 'sans-serif';
-                break;
-              }
-              case 'serif': {
-                font = 'serif';
-                break;
-              }
-              default: {
-                font = 'mono';
-              }
-            }
-
-            if (setFont !== null) setFont(font);
-          }}
         >
-          <option value="sans-serif">Sans Serif</option>
-          <option value="serif">Serif</option>
-          <option value="mono">mono</option>
+          <li>
+            <button
+              onClick={() => changeFont('sans-serif')}
+              aria-label="click to change font to sans-serif"
+            >
+              sans-serif
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => changeFont('serif')}
+              aria-label="click to change font to serif"
+            >
+              serif
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => changeFont('mono')}
+              aria-label="click to change font to mono"
+            >
+              mono
+            </button>
+          </li>
         </Styled.FontSelection>
       </div>
 
