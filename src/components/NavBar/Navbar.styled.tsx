@@ -4,12 +4,19 @@ interface FontSelectionProps {
   showFontMenu: boolean;
 }
 
+interface FontButtonProps {
+  showFontMenu: boolean;
+}
+
 const NavBar = styled.header`
   display: flex;
+  align-items: center;
+  padding-top: 2.4rem;
 `;
 
 const Logo = styled.div`
   margin-right: auto;
+  width: 2.9rem;
 `;
 
 const ThemeToggle = styled.div`
@@ -18,6 +25,8 @@ const ThemeToggle = styled.div`
   button {
     min-width: 4rem;
     height: 2rem;
+    min-width: 4rem;
+    margin-right: 1rem;
   }
 
   svg {
@@ -25,12 +34,81 @@ const ThemeToggle = styled.div`
   }
 `;
 
+const FontSelectionContainer = styled.div`
+  position: relative;
+  margin-right: 1.8rem;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 1px;
+    height: 3.2rem;
+    background-color: #e9e9e9;
+    transform: rotate(180deg) translateY(25%);
+    right: -1rem;
+    top: 0;
+  }
+`;
+
+const FontButton = styled.button<FontButtonProps>`
+  background-color: transparent;
+  color: ${({ theme }) => theme.mainText};
+  border: none;
+  outline-color: transparent;
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  font-family: inherit;
+  font-size: 1.4rem;
+  text-transform: capitalize;
+  margin-right: 1.7rem;
+
+  img {
+    margin-left: 1.2rem;
+    transform: rotate(
+      ${({ showFontMenu }) => (showFontMenu ? '180deg' : '0deg')}
+    );
+    transition: transform 0.25s ease-in;
+  }
+`;
+
 const FontSelection = styled.ul<FontSelectionProps>`
   background: transparent;
+  width: 13.3rem;
   color: inherit;
   font-family: inherit;
   border: none;
-  display: ${({ showFontMenu }) => (showFontMenu ? 'block' : 'none')};
+  display: ${({ showFontMenu }) => (showFontMenu ? 'flex' : 'none')};
+  position: absolute;
+  flex-direction: column;
+  font-size: 0;
+  background-color: ${({ theme }) => theme.fontButtonBackground};
+  border-radius: 16px;
+  padding: 1rem 0;
+
+  li button {
+    width: 100%;
+    background-color: transparent;
+    color: ${({ theme }) => theme.mainText};
+    border: none;
+    cursor: pointer;
+
+    &:hover,
+    &:focus-visible {
+      color: #a445ed;
+    }
+  }
+
+  li:not(:last-of-type) button {
+    margin-bottom: 1rem;
+  }
 `;
 
-export default { NavBar, Logo, ThemeToggle, FontSelection };
+export default {
+  NavBar,
+  Logo,
+  ThemeToggle,
+  FontSelection,
+  FontButton,
+  FontSelectionContainer,
+};
