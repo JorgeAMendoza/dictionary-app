@@ -45,8 +45,8 @@ const FontSelectionContainer = styled.div`
     height: 3.2rem;
     background-color: #e9e9e9;
     transform: rotate(180deg) translateY(25%);
-    right: -1rem;
-    top: 0;
+    right: 0rem;
+    top: 0.2rem;
   }
 `;
 
@@ -73,18 +73,20 @@ const FontButton = styled.button<FontButtonProps>`
 `;
 
 const FontSelection = styled.ul<FontSelectionProps>`
-  background: transparent;
   width: 13.3rem;
   color: inherit;
   font-family: inherit;
   border: none;
   display: ${({ showFontMenu }) => (showFontMenu ? 'flex' : 'none')};
   position: absolute;
+  top: 2.8rem;
+  right: 1.2rem;
   flex-direction: column;
   font-size: 0;
   background-color: ${({ theme }) => theme.fontButtonBackground};
   border-radius: 16px;
   padding: 1rem 0;
+  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
 
   li button {
     width: 100%;
