@@ -31,7 +31,6 @@ const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
     position:relative;
     background-color: ${({ theme }) => theme.background};
     color: ${({ theme }) => theme.mainText};
-    padding-bottom:3rem;
   } 
   img,svg {
     max-width: 100%;
