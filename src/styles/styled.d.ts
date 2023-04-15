@@ -7,5 +7,6 @@ declare module 'styled-components' {
     searchBackground: string;
     moonIcon: string;
     fontButtonBackground: string;
+    fontButtonShadow: string;
   }
 }

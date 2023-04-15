@@ -23,10 +23,12 @@ const ThemeToggle = styled.div`
   display: flex;
   align-items: center;
   button {
-    min-width: 4rem;
     height: 2rem;
     min-width: 4rem;
     margin-right: 1rem;
+    border-radius: 10px;
+    border: none;
+    background-color: #a445ed;
   }
 
   svg {
@@ -86,7 +88,7 @@ const FontSelection = styled.ul<FontSelectionProps>`
   background-color: ${({ theme }) => theme.fontButtonBackground};
   border-radius: 16px;
   padding: 1rem 0;
-  box-shadow: 0 5px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 5px 30px ${({ theme }) => theme.fontButtonShadow};
 
   li button {
     width: 100%;

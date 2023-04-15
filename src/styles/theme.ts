@@ -8,6 +8,7 @@ export const lightTheme: DefaultTheme = {
   searchBackground: '#F4F4F4',
   moonIcon: '#757575',
   fontButtonBackground: '#FFFFFF',
+  fontButtonShadow: 'rgba(0, 0, 0, 0.1)',
 };
 
 export const darkTheme: DefaultTheme = {
@@ -16,4 +17,5 @@ export const darkTheme: DefaultTheme = {
   searchBackground: '#1F1F1F',
   moonIcon: '#A445ED',
   fontButtonBackground: '#1F1F1F',
+  fontButtonShadow: '#A445ED',
 };
