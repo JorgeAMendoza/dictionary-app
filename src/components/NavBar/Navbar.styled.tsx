@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Theme } from '../../context/theme-context';
 
 interface FontSelectionProps {
   showFontMenu: boolean;
@@ -6,6 +7,10 @@ interface FontSelectionProps {
 
 interface FontButtonProps {
   showFontMenu: boolean;
+}
+
+interface ThemeToggleProps {
+  mode: Theme;
 }
 
 const NavBar = styled.header`
@@ -19,16 +24,37 @@ const Logo = styled.div`
   width: 2.9rem;
 `;
 
-const ThemeToggle = styled.div`
+const ThemeToggle = styled.div<ThemeToggleProps>`
   display: flex;
   align-items: center;
   button {
     height: 2rem;
     min-width: 4rem;
-    margin-right: 1rem;
+    margin-right: 1.1rem;
     border-radius: 10px;
     border: none;
-    background-color: #a445ed;
+    background-color: ${({ theme }) => theme.themeButtonBackground};
+    position: relative;
+    isolation: isolate;
+    transition: background-color 0.25s linear;
+  }
+
+  button::after {
+    content: '';
+    position: absolute;
+    height: 1.4rem;
+    width: 1.4rem;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    transform: translate(
+      ${({ mode }) => (mode === 'dark' ? '160%' : '20%')},
+      20%
+    );
+    border-radius: 50%;
+    background-color: #fff;
+    z-index: 1;
+    transition: transform 0.25s linear;
   }
 
   svg {
@@ -38,7 +64,7 @@ const ThemeToggle = styled.div`
 
 const FontSelectionContainer = styled.div`
   position: relative;
-  margin-right: 1.8rem;
+  margin-right: 1.7rem;
 
   &::after {
     content: '';

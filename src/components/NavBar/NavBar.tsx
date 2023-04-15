@@ -73,7 +73,7 @@ const NavBar = () => {
           </Styled.FontSelection>
         </Styled.FontSelectionContainer>
 
-        <Styled.ThemeToggle>
+        <Styled.ThemeToggle mode={theme}>
           <button
             role="switch"
             aria-checked={theme === 'dark' ? true : false}

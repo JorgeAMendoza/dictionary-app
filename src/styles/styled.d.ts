@@ -8,5 +8,6 @@ declare module 'styled-components' {
     moonIcon: string;
     fontButtonBackground: string;
     fontButtonShadow: string;
+    themeButtonBackground: string;
   }
 }

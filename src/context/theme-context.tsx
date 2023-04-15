@@ -5,7 +5,7 @@ export const ThemeActionContext = createContext<React.Dispatch<
   React.SetStateAction<Theme>
 > | null>(null);
 
-type Theme = 'light' | 'dark';
+export type Theme = 'light' | 'dark';
 
 interface ThemeContextProviderProps {
   children: React.ReactNode;
