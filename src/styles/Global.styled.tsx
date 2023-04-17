@@ -29,9 +29,8 @@ const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
     font-size: 1.6rem;
     min-height: 100vh;
     position:relative;
-    background-color: black;
-    color: var(--white);
-    padding-bottom:3rem;
+    background-color: ${({ theme }) => theme.background};
+    color: ${({ theme }) => theme.mainText};
   } 
   img,svg {
     max-width: 100%;
