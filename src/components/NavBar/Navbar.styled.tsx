@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Theme } from '../../context/theme-context';
+import device from '../../styles/utils/device';
 
 interface FontSelectionProps {
   showFontMenu: boolean;
@@ -17,11 +18,19 @@ const NavBar = styled.header`
   display: flex;
   align-items: center;
   padding-top: 2.4rem;
+
+  @media screen and (${device.tablet}) {
+    padding-top: 5.7rem;
+  }
 `;
 
 const Logo = styled.div`
   margin-right: auto;
   width: 2.9rem;
+
+  @media screen and (${device.tablet}) {
+    width: 3.2rem;
+  }
 `;
 
 const ThemeToggle = styled.div<ThemeToggleProps>`
@@ -60,6 +69,12 @@ const ThemeToggle = styled.div<ThemeToggleProps>`
   svg {
     color: ${({ theme }) => theme.moonIcon};
   }
+
+  @media screen and (${device.tablet}) {
+    button {
+      margin-right: 1.8rem;
+    }
+  }
 `;
 
 const FontSelectionContainer = styled.div`
@@ -76,6 +91,15 @@ const FontSelectionContainer = styled.div`
     right: 0rem;
     top: 0.2rem;
   }
+
+  @media screen and (${device.tablet}) {
+    margin-right: 3.6rem;
+
+    &::after {
+      top: 0.6rem;
+      right: -1rem;
+    }
+  }
 `;
 
 const FontButton = styled.button<FontButtonProps>`
@@ -87,7 +111,7 @@ const FontButton = styled.button<FontButtonProps>`
   align-items: center;
   font-weight: bold;
   font-family: inherit;
-  font-size: 1.4rem;
+  font-size: clamp(1.4rem, 5vw + 1rem, 1.8rem);
   text-transform: capitalize;
   margin-right: 1.7rem;
 
@@ -97,6 +121,12 @@ const FontButton = styled.button<FontButtonProps>`
       ${({ showFontMenu }) => (showFontMenu ? '180deg' : '0deg')}
     );
     transition: transform 0.25s ease-in;
+  }
+
+  @media screen and (${device.tablet}) {
+    img {
+      margin-left: 1.3rem;
+    }
   }
 `;
 
@@ -110,7 +140,6 @@ const FontSelection = styled.ul<FontSelectionProps>`
   top: 2.8rem;
   right: 1.2rem;
   flex-direction: column;
-  font-size: 0;
   background-color: ${({ theme }) => theme.fontButtonBackground};
   border-radius: 16px;
   padding: 1rem 0;
@@ -122,6 +151,7 @@ const FontSelection = styled.ul<FontSelectionProps>`
     color: ${({ theme }) => theme.mainText};
     border: none;
     cursor: pointer;
+    font-size: clamp(1.4rem, 5vw + 1rem, 1.6rem);
 
     &:hover,
     &:focus-visible {
