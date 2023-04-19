@@ -8,12 +8,11 @@ interface GlobalStyleProps {
 const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
   html {
     font-size: 62.5%;
-    box-sizing: border-box;
   }
   *,
   *::after,
   *::before {
-    box-sizing: inherit;
+    box-sizing: border-box;
     padding: 0;
     margin: 0;
     line-height: 1.4;
@@ -42,6 +41,12 @@ const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
   input {
     font-family: inherit;
     border: none;
+
+    &[type="search"]::-webkit-search-decoration,
+    &[type="search"]::-webkit-search-cancel-button,
+    &[type="search"]::-webkit-search-results-button,
+    &[type="search"]::-webkit-search-results-decoration { display: none; }
+
   }
   ul,ol{
     list-style: none;

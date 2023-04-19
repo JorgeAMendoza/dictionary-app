@@ -111,7 +111,7 @@ const FontButton = styled.button<FontButtonProps>`
   align-items: center;
   font-weight: bold;
   font-family: inherit;
-  font-size: clamp(1.4rem, 5vw + 1rem, 1.8rem);
+  font-size: clamp(1.4rem, 1vw + 1rem, 1.8rem);
   text-transform: capitalize;
   margin-right: 1.7rem;
 
