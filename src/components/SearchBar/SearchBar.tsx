@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import searchIcon from '../../assets/images/icon-search.svg';
+import { Container } from '../../styles/utils/Container.styled';
+import Styled from './SearchBar.styled';
 
 interface SearchBarProps {
   setWord: React.Dispatch<string>;
@@ -10,38 +12,40 @@ const SearchBar = ({ setWord }: SearchBarProps) => {
   const [error, setError] = useState('');
 
   return (
-    <form
-      aria-label="form for searching word"
-      onSubmit={(e) => {
-        e.preventDefault();
-        if (!search) {
-          setError("Whoops, can't be empty...");
-          return;
-        }
-        setWord(search);
-      }}
-    >
-      <div>
-        <label>
-          <input
-            type="search"
-            placeholder="Search for any word..."
-            onChange={(event) => setSearch(event.target.value)}
-            onBlur={(event) => setSearch(event.target.value)}
-            value={search}
-            data-cy="searchBar"
-          />
-        </label>
-        {error ? <p data-cy="inputErrorText">{error}</p> : null}
-      </div>
-
-      <button
-        aria-label="button to launch search for word"
-        data-cy="searchWordButton"
+    <Container>
+      <Styled.SearchBar
+        aria-label="form for searching word"
+        onSubmit={(e) => {
+          e.preventDefault();
+          if (!search) {
+            setError("Whoops, can't be empty...");
+            return;
+          }
+          setWord(search);
+        }}
       >
-        <img src={searchIcon} alt="search icon" />
-      </button>
-    </form>
+        <Styled.Search>
+          <label>
+            <input
+              type="search"
+              placeholder="Search for any word..."
+              onChange={(event) => setSearch(event.target.value)}
+              onBlur={(event) => setSearch(event.target.value)}
+              value={search}
+              data-cy="searchBar"
+            />
+          </label>
+          {error ? <p data-cy="inputErrorText">{error}</p> : null}
+
+          <button
+            aria-label="button to launch search for word"
+            data-cy="searchWordButton"
+          >
+            <img src={searchIcon} alt="search icon" />
+          </button>
+        </Styled.Search>
+      </Styled.SearchBar>
+    </Container>
   );
 };
 
