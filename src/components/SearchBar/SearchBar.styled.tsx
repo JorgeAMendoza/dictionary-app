@@ -1,7 +1,12 @@
 import styled from 'styled-components';
+import device from '../../styles/utils/device';
 
 const SearchBar = styled.form`
   margin-top: 2.3rem;
+
+  @media screen and (${device.tablet}) {
+    margin-top: 5.3rem;
+  }
 `;
 
 const Search = styled.div`
@@ -22,7 +27,7 @@ const Search = styled.div`
     background-color: transparent;
     font-family: inherit;
     font-weight: 400;
-    font-size: 1.6rem;
+    font-size: clamp(1.6rem, 5vw + 1rem, 2rem);
     color: ${({ theme }) => theme.searchText};
     padding-top: 0.2rem;
     width: 100%;
@@ -40,6 +45,10 @@ const Search = styled.div`
 
   &:focus-within {
     outline: 1px solid #a445ed;
+  }
+
+  @media screen and (${device.tablet}) {
+    min-height: 6.4rem;
   }
 `;
 
