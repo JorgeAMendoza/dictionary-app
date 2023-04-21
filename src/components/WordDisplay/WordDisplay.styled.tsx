@@ -25,6 +25,14 @@ const WordTitle = styled.header`
     align-self: flex-end;
     font-family: 'Inter';
     font-size: clamp(1.8rem, 2vw + 1rem, 2.4rem);
+
+    @media screen and (${device.tablet}) {
+      line-height: 1;
+    }
+
+    @media screen and (${device.laptopL}){
+      line-height: 1.2;
+    }
   }
 
   button {
@@ -48,6 +56,10 @@ const WordTitle = styled.header`
           fill: #fff;
         }
       }
+    }
+
+    @media screen and (${device.tablet}) {
+      width: 7.5rem;
     }
   }
 
