@@ -61,6 +61,14 @@ const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
   ul,ol{
     list-style: none;
   }
+  button{
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    &:disabled{
+      cursor: default;
+    }
+  }
   p,
   li,
   h1,
