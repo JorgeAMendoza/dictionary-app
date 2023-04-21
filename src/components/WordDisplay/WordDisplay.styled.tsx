@@ -1,7 +1,12 @@
 import styled from 'styled-components';
+import device from '../../styles/utils/device';
 
 const WordDisplay = styled.article`
   margin-block-start: 2.6rem;
+
+  @media screen and (${device.tablet}) {
+    margin-block-start: 4.2rem;
+  }
 `;
 
 const WordTitle = styled.header`
@@ -11,7 +16,7 @@ const WordTitle = styled.header`
 
   h1 {
     font-family: 'Inconsolata';
-    font-size: clamp(3.2rem, 5.5vw + 1rem, 6.4rem);
+    font-size: 3.2rem;
     font-weight: bold;
   }
 
@@ -24,8 +29,32 @@ const WordTitle = styled.header`
 
   button {
     width: 4.8rem;
-    background-color: transparent;
-    border: none;
+    &:disabled {
+      opacity: 0.2;
+    }
+
+    svg {
+      height: min-content;
+    }
+
+    &:focus-visible,
+    &:hover,
+    &:active {
+      svg {
+        circle {
+          opacity: 1;
+        }
+        path {
+          fill: #fff;
+        }
+      }
+    }
+  }
+
+  @media screen and (${device.tablet}) {
+    h1 {
+      font-size: 6.4rem;
+    }
   }
 `;
 

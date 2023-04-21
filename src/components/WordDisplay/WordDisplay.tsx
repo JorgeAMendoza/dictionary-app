@@ -2,6 +2,7 @@ import audioIcon from '../../assets/images/icon-play.svg';
 import { useRef } from 'react';
 import { Container } from '../../styles/utils/Container.styled';
 import Styled from './WordDisplay.styled';
+import PlayIcon from '../Icons/PlayIcon';
 
 interface WordDisplayProps {
   wordData: WordInformation;
@@ -30,7 +31,7 @@ const WordDisplay = ({ wordData }: WordDisplayProps) => {
                 if (audioElement) audioElement.current?.play();
               }}
             >
-              <img src={audioIcon} alt="play audio icon" />
+              <PlayIcon />
               <audio src={wordData.audio} ref={audioElement}>
                 <track kind="captions"></track>
               </audio>
@@ -41,7 +42,7 @@ const WordDisplay = ({ wordData }: WordDisplayProps) => {
               disabled
               aria-label={`no audio file for the word ${wordData.word}`}
             >
-              <img src={audioIcon} alt="play audio icon" />
+              <PlayIcon />
             </button>
           )}
         </Styled.WordTitle>
