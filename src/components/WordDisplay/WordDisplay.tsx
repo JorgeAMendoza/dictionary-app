@@ -1,4 +1,3 @@
-import audioIcon from '../../assets/images/icon-play.svg';
 import { useRef } from 'react';
 import { Container } from '../../styles/utils/Container.styled';
 import Styled from './WordDisplay.styled';
