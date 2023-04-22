@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { Container } from '../../styles/utils/Container.styled';
 import Styled from './WordDisplay.styled';
 import PlayIcon from '../Icons/PlayIcon';
+import Meaning from '../Meaning/Meaning';
 
 interface WordDisplayProps {
   wordData: WordInformation;
@@ -47,44 +48,13 @@ const WordDisplay = ({ wordData }: WordDisplayProps) => {
         </Styled.WordTitle>
 
         {wordData.meanings.map((meaning) => (
-          <article
+          <Meaning
             key={meaning.partOfSpeech}
-            data-cy={`${meaning.partOfSpeech}Meanings`}
-          >
-            <h2>{meaning.partOfSpeech}</h2>
-            <section>
-              <h3>meaning</h3>
-              <ul data-cy="meanings">
-                {meaning.definitions.map((info) => (
-                  <li key={info.definition}>
-                    <p>{info.definition}</p>
-                    {info.example ? <p>{info.example}</p> : null}
-                  </li>
-                ))}
-              </ul>
-              {meaning.synonyms.length > 0 ? (
-                <div>
-                  <p>Synonyyms</p>
-                  <ul data-cy="synonymList">
-                    {meaning.synonyms.map((synonym) => (
-                      <li key={synonym.id}>{synonym.word}</li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
-
-              {meaning.antonyms.length > 0 ? (
-                <div>
-                  <p>Antonyms</p>
-                  <ul data-cy="antonymList">
-                    {meaning.antonyms.map((antonym) => (
-                      <li key={antonym.id}>{antonym.word}</li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
-            </section>
-          </article>
+            partOfSpeech={meaning.partOfSpeech}
+            definitions={meaning.definitions}
+            synonyms={meaning.synonyms}
+            antonyms={meaning.antonyms}
+          />
         ))}
 
         <footer>
