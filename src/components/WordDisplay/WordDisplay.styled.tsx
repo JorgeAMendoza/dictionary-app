@@ -4,6 +4,10 @@ import device from '../../styles/utils/device';
 const WordDisplay = styled.article`
   margin-block-start: 2.6rem;
 
+  & > *:not(:last-child) {
+    margin-block-end: 3rem;
+  }
+
   @media screen and (${device.tablet}) {
     margin-block-start: 4.2rem;
   }
@@ -30,7 +34,7 @@ const WordTitle = styled.header`
       line-height: 1;
     }
 
-    @media screen and (${device.laptopL}){
+    @media screen and (${device.laptopL}) {
       line-height: 1.2;
     }
   }
