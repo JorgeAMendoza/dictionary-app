@@ -1,3 +1,5 @@
+import Styled from './Meaning.styled';
+
 type MeaningProps = Meanings;
 
 const Meaning = ({
@@ -7,45 +9,51 @@ const Meaning = ({
   antonyms,
 }: MeaningProps) => {
   return (
-    <section data-cy={`${partOfSpeech}Meanings`}>
+    <Styled.Meaning data-cy={`${partOfSpeech}Meanings`}>
       <h2>{partOfSpeech}</h2>
 
       <div>
         <h3>Meaning</h3>
-        <ul data-cy="meanings">
+        <Styled.DefinitionList data-cy="meanings" role="list">
           {definitions.map((def) => (
             <li key={def.definition}>
-              <p>{def.definition}</p>
-              <p>{def.example ? def.example : null}</p>
+              <div>
+                <p>{def.definition}</p>
+                {def.example ? <p>&ldquo;{def.example}&rdquo;</p> : null}
+              </div>
             </li>
           ))}
-        </ul>
+        </Styled.DefinitionList>
       </div>
 
       {synonyms.length > 0 ? (
-        <div>
+        <Styled.Call>
           <h3>Synonyms</h3>
 
-          <ul data-cy="synonymList">
+          <Styled.CallList data-cy="synonymList" role="list">
             {synonyms.map((synonym) => (
-              <li key={synonym.id}>{synonym.word}</li>
+              <li key={synonym.id}>
+                <p>{synonym.word}</p>
+              </li>
             ))}
-          </ul>
-        </div>
+          </Styled.CallList>
+        </Styled.Call>
       ) : null}
 
       {antonyms.length > 0 ? (
-        <div>
+        <Styled.Call>
           <h3>Antonyms</h3>
 
-          <ul data-cy="antonymList">
+          <Styled.CallList data-cy="antonymList" role="list">
             {antonyms.map((antonym) => (
-              <li key={antonym.id}>{antonym.word}</li>
+              <li key={antonym.id}>
+                <p>{antonym.word}</p>
+              </li>
             ))}
-          </ul>
-        </div>
+          </Styled.CallList>
+        </Styled.Call>
       ) : null}
-    </section>
+    </Styled.Meaning>
   );
 };
 
