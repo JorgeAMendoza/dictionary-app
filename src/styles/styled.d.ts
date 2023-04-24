@@ -10,5 +10,6 @@ declare module 'styled-components' {
     fontButtonBackground: string;
     fontButtonShadow: string;
     themeButtonBackground: string;
+    meaningHeaderLine: string;
   }
 }

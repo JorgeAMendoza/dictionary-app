@@ -11,6 +11,7 @@ export const lightTheme: DefaultTheme = {
   themeButtonBackground: '#757575',
   fontButtonBackground: '#FFFFFF',
   fontButtonShadow: 'rgba(0, 0, 0, 0.1)',
+  meaningHeaderLine: '#E9E9E9',
 };
 
 export const darkTheme: DefaultTheme = {
@@ -22,4 +23,5 @@ export const darkTheme: DefaultTheme = {
   themeButtonBackground: '#a445ed',
   fontButtonBackground: '#1F1F1F',
   fontButtonShadow: '#A445ED',
+  meaningHeaderLine: '#3A3A3A',
 };
