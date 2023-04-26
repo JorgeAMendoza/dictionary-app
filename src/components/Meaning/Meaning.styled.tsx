@@ -18,7 +18,7 @@ const Meaning = styled.section`
     }
 
     @media screen and (${device.tablet}) {
-      margin-bottom: 3.7rem;
+      margin-bottom: 3.5rem;
       &::after {
         width: 88%;
         top: 1.5rem;
@@ -27,7 +27,7 @@ const Meaning = styled.section`
   }
 
   h3 {
-    font-size: 1.6rem;
+    font-size: clamp(1.6rem, 1.5vw + 1rem, 2rem);
     color: #757575;
     font-weight: lighter;
   }
@@ -41,10 +41,10 @@ const DefinitionList = styled.ul`
   margin-block-start: 1.5rem;
 
   li {
-    font-size: 1.5rem;
+    font-size: clamp(1.5rem, 1.2vw + 1rem, 1.8rem);
     display: grid;
     grid-template-columns: 0 1fr;
-    gap: 1.75em;
+    gap: 2.8rem;
 
     p {
       line-height: 1.65;
@@ -67,10 +67,21 @@ const DefinitionList = styled.ul`
       background-color: #a445ed;
       margin-top: 1.1rem;
     }
+
+    @media screen and (${device.tablet}) {
+      &::before {
+        margin-left: 0.5rem;
+        margin-top: 1rem;
+      }
+
+      p {
+        line-height: 1.5;
+      }
+    }
   }
 
   @media screen and (${device.tablet}) {
-    margin-block-start: 2.8rem;
+    margin-block-start: 2.4rem;
 
     li {
       padding-left: 2rem;
@@ -84,6 +95,14 @@ const Call = styled.div`
   h3 {
     margin-right: 3.3rem;
   }
+
+  @media screen and (${device.tablet}) {
+    margin-block-start: 3rem;
+
+    h3 {
+      margin-right: 3.5rem;
+    }
+  }
 `;
 
 const CallList = styled.ul`
@@ -91,6 +110,7 @@ const CallList = styled.ul`
   flex-wrap: wrap;
 
   li p {
+    font-size: clamp(1.6rem, 3vw + 1rem, 2rem);
     color: #a445ed;
   }
 `;
