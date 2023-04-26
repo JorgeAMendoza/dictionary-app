@@ -10,6 +10,10 @@ const WordDisplay = styled.article`
 
   @media screen and (${device.tablet}) {
     margin-block-start: 4.2rem;
+
+    & > *:not(:last-child) {
+      margin-block-end: 4rem;
+    }
   }
 `;
 

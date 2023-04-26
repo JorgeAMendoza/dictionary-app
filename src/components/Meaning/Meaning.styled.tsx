@@ -1,8 +1,9 @@
 import styled from 'styled-components';
+import device from '../../styles/utils/device';
 
 const Meaning = styled.section`
   h2 {
-    font-size: 1.8rem;
+    font-size: clamp(1.8rem, 2vw + 1rem, 2.4rem);
     position: relative;
     margin-bottom: 2.5rem;
 
@@ -14,6 +15,14 @@ const Meaning = styled.section`
       height: 1px;
       width: 81%;
       background-color: ${({ theme }) => theme.meaningHeaderLine};
+    }
+
+    @media screen and (${device.tablet}) {
+      margin-bottom: 3.7rem;
+      &::after {
+        width: 88%;
+        top: 1.5rem;
+      }
     }
   }
 
@@ -51,8 +60,20 @@ const DefinitionList = styled.ul`
     }
 
     &::before {
-      content: '•';
-      color: #a445ed;
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: #a445ed;
+      margin-top: 1.1rem;
+    }
+  }
+
+  @media screen and (${device.tablet}) {
+    margin-block-start: 2.8rem;
+
+    li {
+      padding-left: 2rem;
     }
   }
 `;
