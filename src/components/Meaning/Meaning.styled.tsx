@@ -108,9 +108,10 @@ const Call = styled.div`
 const CallList = styled.ul`
   display: flex;
   flex-wrap: wrap;
+  gap: 1rem;
 
   li p {
-    font-size: clamp(1.6rem, 3vw + 1rem, 2rem);
+    font-size: clamp(1.6rem, 1.5vw + 1rem, 2rem);
     color: #a445ed;
   }
 `;
