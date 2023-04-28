@@ -3,6 +3,7 @@ import { Container } from '../../styles/utils/Container.styled';
 import Styled from './WordDisplay.styled';
 import PlayIcon from '../Icons/PlayIcon';
 import Meaning from '../Meaning/Meaning';
+import linkIcon from '../../assets/images/icon-new-window.svg';
 
 interface WordDisplayProps {
   wordData: WordInformation;
@@ -62,9 +63,15 @@ const WordDisplay = ({ wordData }: WordDisplayProps) => {
           <ul data-cy="wordSources">
             {wordData.sources.map((source) => (
               <li key={source}>
-                <a href={source} target="_blank" rel="noreferrer">
+                <a
+                  href={source}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`link to open up wikipeida page about ${wordData.word}`}
+                >
                   {source}
                 </a>
+                <img src={linkIcon} alt="" />
               </li>
             ))}
           </ul>

@@ -105,6 +105,12 @@ const Footer = styled.footer`
     gap: 1rem;
   }
 
+  li {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
   li a {
     font-size: 1.4rem;
     white-space: pre-wrap;
