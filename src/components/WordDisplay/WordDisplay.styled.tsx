@@ -78,7 +78,53 @@ const WordTitle = styled.header`
   }
 `;
 
+const Footer = styled.footer`
+  position: relative;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0.4rem;
+    left: 0;
+    height: 0.5px;
+    width: 100%;
+    background-color: ${({ theme }) => theme.meaningHeaderLine};
+  }
+
+  p {
+    font-size: 1.4rem;
+    text-decoration: underline;
+    color: #757575;
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  li a {
+    font-size: 1.4rem;
+    white-space: pre-wrap;
+    display: contents;
+  }
+
+  @media screen and (${device.tablet}) {
+    display: flex;
+    align-items: center;
+    gap: 2.2rem;
+    padding-top: 2rem;
+
+    &::after {
+      top: 0;
+    }
+  }
+`;
+
 export default {
   WordDisplay,
   WordTitle,
+  Footer,
 };

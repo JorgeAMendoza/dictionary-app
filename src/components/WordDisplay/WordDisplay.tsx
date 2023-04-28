@@ -57,16 +57,18 @@ const WordDisplay = ({ wordData }: WordDisplayProps) => {
           />
         ))}
 
-        <footer>
-          <p>Sources</p>
+        <Styled.Footer>
+          <p>Source</p>
           <ul data-cy="wordSources">
             {wordData.sources.map((source) => (
-              <a key={source} href={source} target="_blank" rel="noreferrer">
-                {source}
-              </a>
+              <li key={source}>
+                <a href={source} target="_blank" rel="noreferrer">
+                  {source}
+                </a>
+              </li>
             ))}
           </ul>
-        </footer>
+        </Styled.Footer>
       </Styled.WordDisplay>
     </Container>
   );
