@@ -4,6 +4,7 @@ import useSWR from 'swr';
 import fetchWord from '../../lib/fetch-word';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
 import WordDisplay from '../WordDisplay/WordDisplay';
+import Loading from '../Loading/Loading';
 
 const WordSearch = () => {
   const [word, setWord] = useState('keyboard');
@@ -21,7 +22,7 @@ const WordSearch = () => {
     <main>
       <SearchBar setWord={setWord} />
 
-      {isLoading ? <p>loading component here</p> : null}
+      {isLoading ? <Loading /> : null}
       {error ? (
         <ErrorMessage
           errorTitle={error.message}
