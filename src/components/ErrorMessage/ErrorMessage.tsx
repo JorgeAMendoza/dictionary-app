@@ -1,3 +1,6 @@
+import { Container } from '../../styles/utils/Container.styled';
+import Styled from './ErrorMessage.styled';
+
 interface ErrorMessageProps {
   errorTitle: string;
   errorCause: string;
@@ -5,11 +8,13 @@ interface ErrorMessageProps {
 
 const ErrorMessage = ({ errorTitle, errorCause }: ErrorMessageProps) => {
   return (
-    <section id="error-message" data-cy="errorMessage">
-      <p>😕</p>
-      <h1>{errorTitle}</h1>
-      <p>{errorCause}</p>
-    </section>
+    <Container>
+      <Styled.ErrorMessage id="error-message" data-cy="errorMessage">
+        <p>😕</p>
+        <h1>{errorTitle}</h1>
+        <p>{errorCause}</p>
+      </Styled.ErrorMessage>
+    </Container>
   );
 };
 
