@@ -13,7 +13,8 @@ const SearchBar = ({ setWord }: SearchBarProps) => {
 
   return (
     <Container>
-      <Styled.SearchBar
+      <Styled.Search
+        error={error ? true : false}
         aria-label="form for searching word"
         onSubmit={(e) => {
           e.preventDefault();
@@ -21,30 +22,33 @@ const SearchBar = ({ setWord }: SearchBarProps) => {
             setError("Whoops, can't be empty...");
             return;
           }
+          setError('');
           setWord(search);
         }}
       >
-        <Styled.Search>
-          <label>
-            <input
-              type="search"
-              placeholder="Search for any word..."
-              onChange={(event) => setSearch(event.target.value)}
-              onBlur={(event) => setSearch(event.target.value)}
-              value={search}
-              data-cy="searchBar"
-            />
-          </label>
-          {error ? <p data-cy="inputErrorText">{error}</p> : null}
+        <label>
+          <input
+            type="search"
+            placeholder="Search for any word..."
+            onChange={(event) => setSearch(event.target.value)}
+            onBlur={(event) => setSearch(event.target.value)}
+            value={search}
+            data-cy="searchBar"
+          />
+        </label>
+        {error ? (
+          <Styled.EmptySearch data-cy="inputErrorText" aria-live="polite">
+            {error}
+          </Styled.EmptySearch>
+        ) : null}
 
-          <button
-            aria-label="button to launch search for word"
-            data-cy="searchWordButton"
-          >
-            <img src={searchIcon} alt="search icon" />
-          </button>
-        </Styled.Search>
-      </Styled.SearchBar>
+        <button
+          aria-label="button to launch search for word"
+          data-cy="searchWordButton"
+        >
+          <img src={searchIcon} alt="search icon" />
+        </button>
+      </Styled.Search>
     </Container>
   );
 };
