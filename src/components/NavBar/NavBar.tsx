@@ -7,6 +7,7 @@ import Styled from './Navbar.styled';
 import arrowIcon from '../../assets/images/icon-arrow-down.svg';
 import { useState } from 'react';
 import { Container } from '../../styles/utils/Container.styled';
+import useOutsideClick from '../../hooks/useOutsideClick';
 
 const NavBar = () => {
   const [showFontMenu, setShowFontMenu] = useState(false);
@@ -14,6 +15,7 @@ const NavBar = () => {
   const setFont = useFontActionContext();
   const setTheme = useThemeActionContext();
   const theme = useThemeContext();
+  const menu = useOutsideClick(() => setShowFontMenu(false));
 
   const changeFont = (fontSelection: Fonts) => {
     console.log(fontSelection, font);
@@ -30,7 +32,7 @@ const NavBar = () => {
           <img src={bookLogo} alt="website logo" />
         </Styled.Logo>
 
-        <Styled.FontSelectionContainer>
+        <Styled.FontSelectionContainer ref={menu}>
           <Styled.FontButton
             showFontMenu={showFontMenu}
             aria-controls="font-select"
