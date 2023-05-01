@@ -80,6 +80,8 @@ const ThemeToggle = styled.div<ThemeToggleProps>`
 const FontSelectionContainer = styled.div`
   position: relative;
   margin-right: 1.7rem;
+  z-index: 2;
+  isolation: isolate;
 
   &::after {
     content: '';
