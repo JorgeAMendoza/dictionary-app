@@ -115,6 +115,7 @@ const Footer = styled.footer`
     font-size: 1.4rem;
     white-space: pre-wrap;
     display: contents;
+    color: ${({ theme }) => theme.mainText};
   }
 
   @media screen and (${device.tablet}) {
