@@ -6,14 +6,17 @@ const Meaning = styled.section`
     font-size: clamp(1.8rem, 2vw + 1rem, 2.4rem);
     position: relative;
     margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    gap: 2.8rem;
 
     &::after {
       content: '';
-      position: absolute;
       top: 1rem;
       right: 0;
       height: 1px;
-      width: 81%;
+      width: 100%;
       background-color: ${({ theme }) => theme.meaningHeaderLine};
     }
 
