@@ -1,8 +1,10 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import device from '../../styles/utils/device';
+import { fadeIn } from '../../styles/utils/animations';
 
 const WordDisplay = styled.article`
   margin-block-start: 2.6rem;
+  animation: ${fadeIn} 0.5s linear forwards;
 
   & > *:not(:last-child) {
     margin-block-end: 3rem;
