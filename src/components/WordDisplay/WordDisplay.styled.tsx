@@ -1,4 +1,4 @@
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import device from '../../styles/utils/device';
 import { fadeIn } from '../../styles/utils/animations';
 
