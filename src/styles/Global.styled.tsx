@@ -40,6 +40,9 @@ const GlobalStyle = createGlobalStyle<GlobalStyleProps>`
     position:relative;
     background-color: ${({ theme }) => theme.background};
     color: ${({ theme }) => theme.mainText};
+
+    transition: color .2s ease-in-out, background-color .2s ease-in-out;
+
   } 
   img,svg {
     max-width: 100%;
