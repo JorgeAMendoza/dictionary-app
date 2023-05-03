@@ -47,9 +47,11 @@ describe('initial page load of application', () => {
       'contain.text',
       'https://en.wiktionary.org/wiki/keyboard'
     );
+    cy.get('@wordSource').children().should('have.length', 1);
+
     cy.get('@wordSource')
       .children()
-      .should('have.length', 1)
+      .find('a')
       .should('have.attr', 'href')
       .should('contain', 'https://en.wiktionary.org/wiki/keyboard');
   });
