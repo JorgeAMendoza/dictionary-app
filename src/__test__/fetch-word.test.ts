@@ -10,7 +10,7 @@ describe('fetch-word', () => {
     expect(wordData.audio).toBe(null);
 
     expect(wordData.meanings).toHaveLength(2);
-    expect(wordData.source).toBe('https://en.wiktionary.org/wiki/gamer');
+    expect(wordData.sources).toBe('https://en.wiktionary.org/wiki/gamer');
   });
 
   test('successfull search for "keyboard"', async () => {
@@ -22,6 +22,6 @@ describe('fetch-word', () => {
     );
 
     expect(wordData.meanings).toHaveLength(2);
-    expect(wordData.source).toBe('https://en.wiktionary.org/wiki/keyboard');
+    expect(wordData.sources).toBe('https://en.wiktionary.org/wiki/keyboard');
   });
 });

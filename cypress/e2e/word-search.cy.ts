@@ -109,3 +109,5 @@ describe('searching for word', () => {
     cy.get('@wordTitle').should('contain.text', 'keyboard');
   });
 });
+
+export {};

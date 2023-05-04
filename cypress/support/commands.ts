@@ -7,3 +7,5 @@ Cypress.Commands.add('searchWord', (word: string) => {
   cy.get('[data-cy="searchBar"]').clear().type(word);
   cy.get('[data-cy="searchWordButton"]').click();
 });
+
+export {};
