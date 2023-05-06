@@ -54,6 +54,7 @@ const fetchWord = async (word: string): Promise<WordInformation> => {
         antonyms,
       });
     }
+
     const wordInformation = {
       word: data[0].word,
       phonetic: data[0].phonetic,
@@ -78,7 +79,6 @@ const fetchWord = async (word: string): Promise<WordInformation> => {
       const wordIndex = wordInformation.meanings.findIndex(
         (word) => meaning.partOfSpeech === word.partOfSpeech
       );
-      // insert extra information to already existing meaning
       if (wordIndex !== -1) {
         const synonyms = [];
         const antonyms = [];
@@ -103,7 +103,6 @@ const fetchWord = async (word: string): Promise<WordInformation> => {
           ...meaning.definitions
         );
       } else {
-        // need to create new word meaning
         const synonyms = [];
         const antonyms = [];
 
