@@ -1,0 +1,112 @@
+[
+  {
+    "word": "goober",
+    "phonetic": "/ˈɡuːbə/",
+    "phonetics": [
+      {
+        "text": "/ˈɡuːbə/",
+        "audio": ""
+      },
+      {
+        "text": "/ˈɡubəɹ/",
+        "audio": "https://api.dictionaryapi.dev/media/pronunciations/en/goober-us.mp3",
+        "sourceUrl": "https://commons.wikimedia.org/w/index.php?curid=2358025",
+        "license": {
+          "name": "BY-SA 3.0",
+          "url": "https://creativecommons.org/licenses/by-sa/3.0"
+        }
+      }
+    ],
+    "meanings": [
+      {
+        "partOfSpeech": "noun",
+        "definitions": [
+          {
+            "definition": "The language of Georgia, a country in Eastern Europe.",
+            "synonyms": [],
+            "antonyms": []
+          },
+          {
+            "definition": "A person or a descendant of a person from Georgia, a country in Eastern Europe.",
+            "synonyms": [],
+            "antonyms": []
+          },
+          {
+            "definition": "A native or resident of the state of Georgia in the United States of America.",
+            "synonyms": [],
+            "antonyms": []
+          }
+        ],
+        "synonyms": ["goober", "goober-grabbler"],
+        "antonyms": []
+      },
+      {
+        "partOfSpeech": "noun",
+        "definitions": [
+          {
+            "definition": "A British citizen during the reign of a king named George.",
+            "synonyms": [],
+            "antonyms": []
+          }
+        ],
+        "synonyms": [],
+        "antonyms": []
+      },
+      {
+        "partOfSpeech": "noun",
+        "definitions": [
+          {
+            "definition": "A foolish, simple, or amusingly silly person.",
+            "synonyms": [],
+            "antonyms": []
+          }
+        ],
+        "synonyms": [],
+        "antonyms": []
+      },
+      {
+        "partOfSpeech": "verb",
+        "definitions": [
+          {
+            "definition": "To drool or dribble.",
+            "synonyms": [],
+            "antonyms": []
+          },
+          {
+            "definition": "To drip or slather; to apply a gooey substance to a surface.",
+            "synonyms": [],
+            "antonyms": []
+          }
+        ],
+        "synonyms": [],
+        "antonyms": []
+      },
+      {
+        "partOfSpeech": "noun",
+        "definitions": [
+          {
+            "definition": "A legume resembling a nut, the fruit of the plant Arachis hypogaea.",
+            "synonyms": [],
+            "antonyms": []
+          },
+          {
+            "definition": "A very small clam.",
+            "synonyms": [],
+            "antonyms": []
+          }
+        ],
+        "synonyms": ["goober", "goober pea", "monkey nut"],
+        "antonyms": []
+      }
+    ],
+    "license": {
+      "name": "CC BY-SA 3.0",
+      "url": "https://creativecommons.org/licenses/by-sa/3.0"
+    },
+    "sourceUrls": [
+      "https://en.wiktionary.org/wiki/Georgian",
+      "https://en.wiktionary.org/wiki/goober",
+      "https://en.wiktionary.org/wiki/peanut"
+    ]
+  }
+]
