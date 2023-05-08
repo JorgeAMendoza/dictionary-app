@@ -13,6 +13,8 @@ The requirement of the project is to create a single-page web application that a
 
 The [Free Dictionary API](https://dictionaryapi.dev/) was used to provide the data for the application.
 
+[Live Demo](https://dictionary-gml37y3ju-jorgeamendoza.vercel.app/)
+
 ## Table of Contents
 
 - [Technologies Used](#technologies-used)
