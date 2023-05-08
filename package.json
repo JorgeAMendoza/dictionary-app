@@ -31,7 +31,6 @@
     "cypress": "^12.5.1",
     "eslint": "^8.33.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-config-react": "^1.1.7",
     "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-jsx-a11y": "^6.6.1",
     "eslint-plugin-react": "^7.31.11",
